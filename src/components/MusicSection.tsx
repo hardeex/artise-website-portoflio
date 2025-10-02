@@ -14,7 +14,6 @@ interface Release {
 }
 
 const MusicSection: React.FC = () => {
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [playingTrack, setPlayingTrack] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +23,8 @@ const MusicSection: React.FC = () => {
       year: 2025,
       tracks: 1,
       type: "single",
-      spotifyUrl: "https://open.spotify.com/track/4GlwuIEi3vWcC4Cc2y476U?si=9bcb3105cbe84ae2",
+      spotifyUrl:
+        "https://open.spotify.com/track/4GlwuIEi3vWcC4Cc2y476U?si=9bcb3105cbe84ae2",
       appleMusicUrl: "https://music.apple.com/album/toxic",
       featured: true,
       imageUrl: "/assets/efe_images/Efezino Toxic picture .jpg",
@@ -78,9 +78,11 @@ const MusicSection: React.FC = () => {
       year: 2019,
       tracks: 1,
       type: "single",
-      spotifyUrl: "https://open.spotify.com/track/7wIRtXKQNYRT25X5Kn0WBU?si=e441dd9d3a264e74",
+      spotifyUrl:
+        "https://open.spotify.com/track/7wIRtXKQNYRT25X5Kn0WBU?si=e441dd9d3a264e74",
       appleMusicUrl: "https://music.apple.com/album/amere",
-      imageUrl: "/assets/efe_images/Mehn_ I_m pretty. __When I was 12_ I wanted to be a model. Fast forward to 2023_ I can confidently tel (4).jpg",
+      imageUrl:
+        "/assets/efe_images/Mehn_ I_m pretty. __When I was 12_ I wanted to be a model. Fast forward to 2023_ I can confidently tel (4).jpg",
       color: "from-orange-600 via-rose-700 to-red-800",
     },
   ];
@@ -118,31 +120,37 @@ const MusicSection: React.FC = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="py-20 bg-gradient-to-br from-amber-50/50 via-orange-50/50 to-stone-50/50 relative overflow-hidden"
     >
-      {/* Soft Background Elements */}
+      {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-amber-200/30 to-orange-200/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-orange-200/30 to-stone-200/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-gradient-to-br from-stone-200/20 to-neutral-200/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+        <div
+          className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-orange-200/30 to-stone-200/30 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-1/4 w-72 h-72 bg-gradient-to-br from-stone-200/20 to-neutral-200/20 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "4s" }}
+        ></div>
       </div>
 
-      {/* Floating Musical Elements */}
+      {/* Floating Symbols */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
             className="absolute text-2xl animate-bounce opacity-20"
             style={{
-              left: `${15 + (i * 12)}%`,
+              left: `${15 + i * 12}%`,
               top: `${10 + (i % 3) * 30}%`,
               animationDelay: `${i * 0.7}s`,
-              color: ['#ea580c', '#78350f', '#d97706', '#c2410c'][i % 4],
+              color: ["#ea580c", "#78350f", "#d97706", "#c2410c"][i % 4],
             }}
           >
-            {['♪', '♫', '♬', '♭'][i % 4]}
+            {["♪", "♫", "♬", "♭"][i % 4]}
           </div>
         ))}
       </div>
@@ -152,16 +160,19 @@ const MusicSection: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm rounded-full px-6 py-2 border border-orange-200/50 shadow-lg shadow-orange-100/50 mb-6">
             <Sparkles className="w-5 h-5 text-orange-600" />
-            <span className="text-orange-800 font-medium">My Musical Journey</span>
+            <span className="text-orange-800 font-medium">
+              My Musical Journey
+            </span>
           </div>
-          
+
           <h2 className="text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-orange-600 via-amber-700 to-stone-800 bg-clip-text mb-6">
             Songs & Stories
           </h2>
-          
+
           <p className="text-xl text-stone-700 max-w-3xl mx-auto leading-relaxed">
-            Each song is a piece of my heart, a story from my soul. From intimate singles to full-bodied albums, 
-            discover the melodies that have shaped my artistic journey.
+            Each song is a piece of my heart, a story from my soul. From
+            intimate singles to full-bodied albums, discover the melodies that
+            have shaped my artistic journey.
           </p>
         </div>
 
@@ -170,25 +181,26 @@ const MusicSection: React.FC = () => {
           {releases.map((release, index) => (
             <div
               key={`${release.title}-${release.year}`}
-              className={`music-card group relative opacity-0 transform translate-y-8`}
+              className="music-card group relative opacity-0 transform translate-y-8"
               style={{ animationDelay: `${index * 0.1}s` }}
-              onMouseEnter={() => setHoveredCard(release.title)}
-              onMouseLeave={() => setHoveredCard(null)}
             >
               <div className="relative overflow-hidden bg-white/70 backdrop-blur-sm rounded-3xl border border-amber-200/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105">
-                {/* Image Container */}
+                {/* Image */}
                 <div className="relative aspect-square overflow-hidden">
                   <img
                     src={release.imageUrl}
                     alt={release.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    style={{ filter: 'sepia(8%) saturate(105%) brightness(102%)' }}
+                    style={{
+                      filter: "sepia(8%) saturate(105%) brightness(102%)",
+                    }}
                   />
-                  
-                  {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-t ${release.color} opacity-15 group-hover:opacity-25 transition-opacity duration-300`}></div>
-                  
-                  {/* Play Button Overlay */}
+
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-t ${release.color} opacity-15 group-hover:opacity-25 transition-opacity duration-300`}
+                  ></div>
+
+                  {/* Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-stone-900/20 backdrop-blur-sm">
                     <button
                       onClick={() => handlePlay(release.title)}
@@ -198,14 +210,15 @@ const MusicSection: React.FC = () => {
                     </button>
                   </div>
 
-                  {/* Type Badge */}
+                  {/* Badges */}
                   <div className="absolute top-4 left-4">
-                    <div className={`bg-gradient-to-r ${release.color} px-3 py-1 rounded-full text-white text-sm font-semibold shadow-lg`}>
+                    <div
+                      className={`bg-gradient-to-r ${release.color} px-3 py-1 rounded-full text-white text-sm font-semibold shadow-lg`}
+                    >
                       {release.type.toUpperCase()}
                     </div>
                   </div>
 
-                  {/* Year Badge */}
                   <div className="absolute top-4 right-4">
                     <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-stone-800 text-sm font-semibold shadow-lg border border-orange-200/50">
                       {release.year}
@@ -220,7 +233,9 @@ const MusicSection: React.FC = () => {
                       {release.title}
                     </h3>
                     <p className="text-stone-600">
-                      {release.tracks} {release.tracks === 1 ? 'track' : 'tracks'} • {release.year}
+                      {release.tracks}{" "}
+                      {release.tracks === 1 ? "track" : "tracks"} •{" "}
+                      {release.year}
                     </p>
                   </div>
 
@@ -238,7 +253,7 @@ const MusicSection: React.FC = () => {
                           <span>Spotify</span>
                         </a>
                       )}
-                      
+
                       {release.appleMusicUrl && (
                         <a
                           href={release.appleMusicUrl}
@@ -259,7 +274,7 @@ const MusicSection: React.FC = () => {
                       >
                         <Share2 className="w-5 h-5" />
                       </button>
-                      
+
                       <button className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-stone-600 hover:text-red-600 hover:scale-110 transition-all duration-300 shadow-lg border border-orange-200/30">
                         <Heart className="w-5 h-5" />
                       </button>
@@ -283,7 +298,7 @@ const MusicSection: React.FC = () => {
             transform: translateY(0);
           }
         }
-        
+
         .animate-fadeInUp {
           animation: fadeInUp 0.6s ease-out forwards;
         }
