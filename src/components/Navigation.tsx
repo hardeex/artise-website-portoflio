@@ -19,9 +19,14 @@ interface NavigationProps {
   currentPath?: string;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ currentPath = "/" }) => {
+const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Get current path from window.location if not provided
+  const activePath =
+    currentPath ||
+    (typeof window !== "undefined" ? window.location.pathname : "/");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,8 +53,8 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath = "/" }) => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const isActiveLink = (href: string) => {
-    if (href === "/") return currentPath === "/";
-    return currentPath.startsWith(href);
+    if (href === "/") return activePath === "/";
+    return activePath.startsWith(href);
   };
 
   return (
@@ -195,7 +200,9 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath = "/" }) => {
                   >
                     <Icon
                       className={`w-5 h-5 ${
-                        isActiveLink(item.href) ? "text-stone-50" : "text-stone-50"
+                        isActiveLink(item.href)
+                          ? "text-stone-50"
+                          : "text-stone-50"
                       }`}
                     />
                   </div>
@@ -227,7 +234,11 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath = "/" }) => {
                 color: "from-stone-700 to-stone-800",
                 href: "#",
               },
-              { name: "YouTube", color: "from-orange-800 to-red-800", href: "#" },
+              {
+                name: "YouTube",
+                color: "from-orange-800 to-red-800",
+                href: "#",
+              },
               {
                 name: "Spotify",
                 color: "from-amber-800 to-orange-900",
