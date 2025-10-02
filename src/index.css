@@ -1,0 +1,210 @@
+/* Font imports */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap");
+
+/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-900 antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-primary rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-accent;
+  }
+}
+
+@layer components {
+  /* Button base styles */
+  .btn-base {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-brand-primary text-white hover:bg-tide-600 focus:ring-brand-primary;
+  }
+
+  .btn-secondary {
+    @apply btn-base bg-brand-secondary text-white hover:bg-haze-600 focus:ring-brand-secondary;
+  }
+
+  .btn-accent {
+    @apply btn-base bg-brand-accent text-white hover:bg-bubble-turquoise-dark focus:ring-brand-accent;
+  }
+
+  .btn-outline {
+    @apply btn-base bg-transparent border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white focus:ring-brand-primary;
+  }
+
+  .btn-ghost {
+    @apply btn-base bg-transparent text-brand-primary hover:bg-brand-primary/10 focus:ring-brand-primary shadow-none;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 hover:shadow-lg hover:border-brand-accent/20 hover:-translate-y-1;
+  }
+
+  /* Section styles */
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Typography */
+  .heading-primary {
+    @apply text-4xl lg:text-6xl font-display font-bold text-brand-primary leading-tight;
+  }
+
+  .heading-secondary {
+    @apply text-2xl lg:text-4xl font-display font-semibold text-brand-primary leading-tight;
+  }
+
+  .heading-tertiary {
+    @apply text-xl lg:text-2xl font-display font-medium text-brand-primary leading-tight;
+  }
+
+  .body-large {
+    @apply text-lg lg:text-xl text-gray-700 leading-relaxed;
+  }
+
+  .body-regular {
+    @apply text-base text-gray-600 leading-relaxed;
+  }
+
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  /* Loading states */
+  .loading-shimmer {
+    background: linear-gradient(110deg, #f3f4f6 8%, #e5e7eb 18%, #f3f4f6 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
+
+@layer utilities {
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/20 backdrop-blur-sm border border-white/30;
+  }
+
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-sm border border-white/10;
+  }
+
+  /* Text gradients */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent;
+  }
+
+  .text-gradient-warm {
+    @apply bg-gradient-to-r from-orange-500 to-blossom-400 bg-clip-text text-transparent;
+  }
+
+  /* Background gradients */
+  .bg-gradient-ocean {
+    background: linear-gradient(
+      135deg,
+      theme("colors.tide.500") 0%,
+      theme("colors.bubble.turquoise") 100%
+    );
+  }
+
+  .bg-gradient-sunset {
+    background: linear-gradient(
+      135deg,
+      theme("colors.orange.500") 0%,
+      theme("colors.blossom.400") 100%
+    );
+  }
+
+  .bg-gradient-mist {
+    background: linear-gradient(
+      135deg,
+      theme("colors.haze.300") 0%,
+      theme("colors.tide.200") 100%
+    );
+  }
+
+  /* Responsive utilities */
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aspect-landscape {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Focus styles */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2;
+  }
+}
