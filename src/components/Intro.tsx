@@ -76,8 +76,8 @@ const HeroSection: React.FC = () => {
 
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen">
-          {/* Left Side - Content */}
-          <div className="space-y-8 animate-fadeIn">
+          {/* Left Side - Content (Order 2 on mobile, Order 1 on desktop) */}
+          <div className="space-y-8 animate-fadeIn order-2 lg:order-1">
             {/* Soft Tag */}
             <div className="inline-flex items-center space-x-2 bg-stone-50/80 backdrop-blur-sm rounded-full px-6 py-2 border border-orange-200/50 shadow-lg shadow-orange-100/50">
               <Heart className="w-4 h-4 text-orange-700" />
@@ -141,7 +141,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Social Links - Soft Style */}
-            <div className="flex space-x-4 pt-6">
+            <div className="flex space-x-4 pt-6 pb-8 lg:pb-0">
               {[
                 {
                   icon: Instagram,
@@ -172,8 +172,8 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Side - Soft Image Gallery */}
-          <div className="relative">
+          {/* Right Side - Soft Image Gallery (Order 1 on mobile, Order 2 on desktop) */}
+          <div className="relative order-1 lg:order-2">
             {/* Main Image Container - Organic Shape */}
             <div className="relative group">
               <div 
@@ -258,8 +258,8 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Floating Stats - Soft Bubbles */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+        {/* Floating Stats - Soft Bubbles (Hidden on mobile, shown on larger screens) */}
+        <div className="hidden lg:block absolute bottom-20 left-1/2 transform -translate-x-1/2">
           <div className="flex items-center space-x-8">
             {[
               { number: "11k+", label: "Monthly Listeners", color: "from-orange-700 to-amber-700" },

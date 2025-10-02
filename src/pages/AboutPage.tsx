@@ -3,6 +3,7 @@ import {
   Music, Heart, Globe, MapPin, Calendar, Award, Mic, Users, Star, Sparkles,
   ArrowRight, Camera, Play, X, Trophy, Radio, Volume2, Target,
 } from "lucide-react";
+import { Link } from "react-router";
 
 const AboutPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("journey");
@@ -418,10 +419,10 @@ const AboutPage: React.FC = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-800">The Journey Continues</h2>
             <p className="text-lg md:text-xl text-stone-600 leading-relaxed max-w-3xl mx-auto">With 16 years of experience and countless beautiful memories, I'm just getting started. Join me as I continue to create, inspire, and share the beauty of Afrobeat with the world.</p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 pt-4">
-              <button className="group bg-gradient-to-r from-orange-700 via-amber-800 to-orange-700 hover:from-orange-800 hover:via-amber-900 hover:to-orange-800 text-stone-50 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-3">
+              <Link to="https://open.spotify.com/artist/0eYobfoCMOOoN4sOrhsmaE" target="_blank" className="group bg-gradient-to-r from-orange-700 via-amber-800 to-orange-700 hover:from-orange-800 hover:via-amber-900 hover:to-orange-800 text-stone-50 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-3">
                 <Play className="w-4 md:w-5 h-4 md:h-5" />
                 <span>Listen to My Music</span>
-              </button>
+              </Link>
               <button className="bg-stone-50/90 hover:bg-stone-50 backdrop-blur-sm text-stone-700 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 border-2 border-stone-300/50 hover:border-orange-300 shadow-lg hover:shadow-xl flex items-center space-x-3">
                 <Heart className="w-4 md:w-5 h-4 md:h-5" />
                 <span>Follow My Journey</span>
